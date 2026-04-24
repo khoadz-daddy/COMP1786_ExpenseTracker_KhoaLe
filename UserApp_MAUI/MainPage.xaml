@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ExpenseTrackerUser"
+             x:Class="ExpenseTrackerUser.MainPage"
+             x:Name="MainPageRoot"
+             x:DataType="local:MainPageViewModel"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#0F172A" Offset="0.0" />
+            <GradientStop Color="#0F172A" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <Style x:Key="GlassCard" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="#1AFFFFFF" />
+            <Setter Property="Stroke" Value="#33FFFFFF" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+            <Setter Property="Padding" Value="16" />
+        </Style>
+
+        <Style x:Key="FilterBtn" TargetType="Button">
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Padding" Value="14,7" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Background="{StaticResource BackgroundGradient}" RowDefinitions="Auto,Auto,Auto,*">
+
+        <!-- ── Modern header bar ── -->
+        <Border Grid.Row="0"
+                BackgroundColor="Transparent"
+                Stroke="Transparent"
+                StrokeThickness="0"
+                Padding="18,16,18,16">
+            <Grid ColumnDefinitions="*,Auto">
+                <!-- Title block -->
+                <VerticalStackLayout Spacing="3">
+                    <Label Text="📊 Projects"
+                           TextColor="#F8FAFC"
+                           FontSize="24"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding FilteredProjects.Count, StringFormat='{0} projects'}"
+                           TextColor="#94A3B8"
+                           FontSize="13" />
+                </VerticalStackLayout>
+
+                <!-- Refresh button -->
+                <Button Grid.Column="1"
+                        Text="↻"
+                        Command="{Binding RefreshCommand}"
+                        BackgroundColor="#1EFFFFFF"
+                        TextColor="#FFFFFF"
+                        FontSize="22"
+                        CornerRadius="22"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        Padding="0"
+                        VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <!-- ── Search + filters ── -->
+        <VerticalStackLayout Grid.Row="1" Spacing="10" Padding="14,10,14,0">
+
+            <!-- Search bar -->
+            <Border BackgroundColor="#1AFFFFFF"
+                    Stroke="#33FFFFFF"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="0">
+                <SearchBar Text="{Binding SearchText}"
+                           SearchCommand="{Binding SearchCommand}"
+                           Placeholder="Search by name, status, manager…"
+                           BackgroundColor="Transparent"
+                           TextColor="#F8FAFC"
+                           PlaceholderColor="#94A3B8"
+                           HeightRequest="46"
+                           CancelButtonColor="#94A3B8" />
+            </Border>
+
+            <!-- Filter buttons -->
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="All"
+                        Style="{StaticResource FilterBtn}"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="All"
+                        BackgroundColor="{Binding AllButtonColor}" />
+                <Button Text="Active"
+                        Style="{StaticResource FilterBtn}"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="Active"
+                        BackgroundColor="{Binding ActiveButtonColor}" />
+                <Button Text="At Risk"
+                        Style="{StaticResource FilterBtn}"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="At Risk"
+                        BackgroundColor="{Binding AtRiskButtonColor}" />
+                <Button Text="Done"
+                        Style="{StaticResource FilterBtn}"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="Completed"
+                        BackgroundColor="{Binding CompletedButtonColor}" />
+                <Button Text="Fav"
+                        Style="{StaticResource FilterBtn}"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="Favorites"
+                        BackgroundColor="{Binding FavoriteButtonColor}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <!-- ── Loading / status bar ── -->
+        <Border Grid.Row="2"
+                Style="{StaticResource GlassCard}"
+                Margin="14,10,14,0"
+                IsVisible="{Binding IsBusy}">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="#38BDF8"
+                                   WidthRequest="20"
+                                   HeightRequest="20" />
+                <Label Grid.Column="1"
+                       Text="{Binding StatusMessage}"
+                       TextColor="#AAAAAA"
+                       FontSize="13"
+                       VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <!-- ── Project list with pull-to-refresh ── -->
+                <RefreshView Grid.Row="3"
+                             Command="{Binding RefreshCommand}"
+                             IsRefreshing="{Binding IsBusy}"
+                             RefreshColor="#38BDF8">
+            <CollectionView ItemsSource="{Binding FilteredProjects}"
+                            SelectionMode="Single"
+                            BackgroundColor="Transparent"
+                            SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding NavigateToDetailsCommand}"
+                            ItemsUpdatingScrollMode="KeepScrollOffset">
+
+                <!-- Header spacing -->
+                <CollectionView.Header>
+                    <BoxView HeightRequest="10" BackgroundColor="Transparent" />
+                </CollectionView.Header>
+
+                <!-- Footer spacing -->
+                <CollectionView.Footer>
+                    <BoxView HeightRequest="24" BackgroundColor="Transparent" />
+                </CollectionView.Footer>
+
+                <!-- Empty state -->
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center"
+                                         VerticalOptions="Center"
+                                         Spacing="12"
+                                         Padding="40">
+                        <Label Text="🔍" FontSize="48" HorizontalOptions="Center" />
+                        <Label Text="No projects found"
+                               TextColor="#94A3B8"
+                               FontSize="16"
+                               HorizontalOptions="Center" />
+                        <Label Text="Pull down to refresh or adjust filters"
+                               TextColor="#94A3B8"
+                               FontSize="13"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Project">
+                        <Border Style="{StaticResource GlassCard}"
+                                Margin="14,0,14,10">
+                            <VerticalStackLayout Spacing="12">
+
+                                <!-- Project name row -->
+                                <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+                                    <Label Text="{Binding StatusIcon}"
+                                           FontSize="22"
+                                           VerticalOptions="Center" />
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Name}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#F8FAFC"
+                                           VerticalOptions="Center"
+                                           LineBreakMode="TailTruncation" />
+                                    <Border Grid.Column="2"
+                                            BackgroundColor="#1AF2C94C"
+                                            Stroke="#30F2C94C"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 10"
+                                            Padding="7,3"
+                                            VerticalOptions="Center">
+                                        <Label Text="{Binding RiskLabel}"
+                                               TextColor="#F2C94C"
+                                               FontSize="11"
+                                               FontAttributes="Bold" />
+                                    </Border>
+                                    <Button Grid.Column="3"
+                                            Text="{Binding FavoriteLabel}"
+                                            Command="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.ToggleFavoriteCommand}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#1E293B"
+                                            TextColor="#F8FAFC"
+                                            FontSize="10"
+                                            CornerRadius="12"
+                                            Padding="10,4"
+                                            VerticalOptions="Center" />
+                                </Grid>
+
+                                <!-- Description -->
+                                <Label Text="{Binding Description}"
+                                       FontSize="13"
+                                       TextColor="#94A3B8"
+                                       LineBreakMode="TailTruncation"
+                                       MaxLines="2" />
+
+                                <!-- Status + Date row -->
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                    <Border BackgroundColor="#1E293B"
+                                            Stroke="#334155"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 12"
+                                            Padding="9,5">
+                                        <Label Text="{Binding StatusLabel}"
+                                               TextColor="#F8FAFC"
+                                               FontSize="12" />
+                                    </Border>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding DisplayDate, StringFormat='📅 {0}'}"
+                                           TextColor="#94A3B8"
+                                           FontSize="12"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center" />
+                                </Grid>
+
+                                <!-- Budget numbers -->
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="SPENT" TextColor="#64748B" FontSize="10" />
+                                        <Label Text="{Binding TotalSpent, StringFormat='{0:C0}'}"
+                                               TextColor="#FB923C" FontSize="15" FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                        <Label Text="REMAINING" TextColor="#94A3B8" FontSize="10" />
+                                        <Label Text="{Binding RemainingBudget, StringFormat='{0:C0}'}"
+                                               TextColor="#EF4444" FontSize="15" FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Grid>
+
+                                <!-- Progress bar -->
+                                <ProgressBar Progress="{Binding Progress}"
+                                             ProgressColor="{Binding ProgressColor}"
+                                             HeightRequest="6" />
+                                <Label Text="{Binding BudgetStatus}"
+                                       TextColor="{Binding ProgressColor}"
+                                       FontSize="12"
+                                       FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+</ContentPage>

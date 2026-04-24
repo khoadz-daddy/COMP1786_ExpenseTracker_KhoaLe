@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+
+AdminApp_Java/.gradle/
+AdminApp_Java/build/
+AdminApp_Java/app/build/
+AdminApp_Java/.idea/
+AdminApp_Java/local.properties
+
+UserApp_MAUI/bin/
+UserApp_MAUI/obj/
+UserApp_MAUI/.vs/
+
+*.user

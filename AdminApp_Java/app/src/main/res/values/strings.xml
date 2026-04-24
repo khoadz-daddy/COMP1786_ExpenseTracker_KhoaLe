@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="back">Back</string>
+    <string name="manage_expenses">MANAGE EXPENSES</string>
+    <string name="expense_name_hint">Expense Name (e.g. Cement)</string>
+    <string name="amount_hint">Amount ($)</string>
+    <string name="add_expense">ADD EXPENSE</string>
+    <string name="project_expenses">PROJECT EXPENSES</string>
+
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="export_csv">Export CSV</string>
+    <string name="system_overview">SYSTEM OVERVIEW</string>
+    <string name="total_budget">Total Budget</string>
+    <string name="total_spent">Total Spent</string>
+    <string name="search_hint">Search project name...</string>
+    <string name="add_new_project">Add New Project</string>
+    <string name="no_projects_yet">No projects yet.</string>
+
+    <string name="project_admin">Project Admin</string>
+    <string name="create_entry_desc">Create new management entry</string>
+    <string name="general_info">GENERAL INFO</string>
+    <string name="project_name_hint">Project Name *</string>
+    <string name="description_hint">Description / Destination</string>
+    <string name="manager_name_hint">Manager Name</string>
+    <string name="special_requirements_hint">Special requirements (optional)</string>
+    <string name="client_info_hint">Client/Department info (optional)</string>
+    <string name="finance_status">FINANCE &amp; STATUS</string>
+    <string name="budget_hint">Budget ($) *</string>
+    <string name="project_status">Project Status</string>
+    <string name="risk_assessment">Risk Assessment</string>
+    <string name="timeline">TIMELINE</string>
+    <string name="start_date_hint">Start Date *</string>
+    <string name="end_date_hint">End Date</string>
+    <string name="deploy_project">DEPLOY PROJECT</string>
+    <string name="open_database">Open Database</string>
+    <string name="cloud_sync">Cloud Sync</string>
+    <string name="reset_database">Reset Database</string>
+    <string name="reset_database_message">This will delete all local projects and expenses from SQLite. Continue?</string>
+    <string name="database_reset_success">Local database cleared.</string>
+
+    <string name="start_label">Start: %1$s</string>
+    <string name="budget_label">Budget: $%1$.2f</string>
+    <string name="usage_label">Used: %1$d%% ($%2$.2f)</string>
+    <string name="zero_amount">$0.00</string>
+    <string name="done">Done</string>
+    <string name="active">Active</string>
+    <string name="all">All</string>
+    <string name="at_risk">At Risk</string>
+
+    <string-array name="risk_options">
+        <item>All Risks</item>
+        <item>No</item>
+        <item>Yes</item>
+    </string-array>
+    <string-array name="status_options">
+        <item>Active</item>
+        <item>Completed</item>
+        <item>On Hold</item>
+    </string-array>
+    <string-array name="expense_types">
+        <item>Travel</item>
+        <item>Equipment</item>
+        <item>Materials</item>
+        <item>Services</item>
+        <item>Software/Licenses</item>
+        <item>Labour costs</item>
+        <item>Utilities</item>
+        <item>Miscellaneous</item>
+    </string-array>
+    <string-array name="payment_statuses">
+        <item>Paid</item>
+        <item>Pending</item>
+        <item>Reimbursed</item>
+    </string-array>
+    <string-array name="currency_options">
+        <item>USD ($)</item>
+        <item>VND (đ)</item>
+        <item>EUR (€)</item>
+        <item>GBP (£)</item>
+    </string-array>
+    <string-array name="method_options">
+        <item>Cash</item>
+        <item>Credit Card</item>
+        <item>Bank Transfer</item>
+        <item>Cheque</item>
+    </string-array>
+
+    <string name="project_code_hint">Project Code/ID *</string>
+    <string name="claimant_hint">Claimant Name *</string>
+    <string name="location_hint">Location (Optional)</string>
+    <string name="currency_label">Currency</string>
+    <string name="method_label">Payment Method</string>
+
+    <!-- Additional UI Strings -->
+    <string name="usage_label_short">Usage: %1$d%%</string>
+    <string name="expense_name">Expense Name</string>
+    <string name="pending_status">Pending</string>
+    <string name="type_label">Type</string>
+    <string name="date_label">Date</string>
+    <string name="amount_title">Amount ($)</string>
+    <string name="delete_confirm_title">Delete Confirm</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="edit_project">Edit Project</string>
+    <string name="delete_project">Delete Project</string>
+    <string name="save_confirm_msg">Are you sure you want to save this project?</string>
+    <string name="review">Review</string>
+    <string name="yes_save">Yes, Save</string>
+    <string name="project_saved_successfully">Project saved successfully!</string>
+    <string name="no_data_sync">No data to sync</string>
+    <string name="sync_success">Sync to Cloud Successful!</string>
+    <string name="sync_failed">Sync Failed: %1$s</string>
+    <string name="syncing">Syncing...</string>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ExpenseTrackerUser"
+             x:Class="ExpenseTrackerUser.ExpenseEditPage"
+             x:DataType="local:ExpenseEditViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#0F172A">
+
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="#94A3B8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="Margin" Value="0,15,0,5" />
+        </Style>
+        <Style x:Key="GlassBorder" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="#1AFFFFFF" />
+            <Setter Property="Stroke" Value="#33FFFFFF" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+            <Setter Property="Padding" Value="14,0" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="0">
+            <Label Text="Description" Style="{StaticResource LabelStyle}" Margin="0,0,0,5" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Entry Text="{Binding Description}" Placeholder="Enter description" TextColor="#F8FAFC" PlaceholderColor="#64748B" BackgroundColor="Transparent" />
+            </Border>
+
+            <Label Text="Amount" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Entry Text="{Binding Amount}" Keyboard="Numeric" Placeholder="Enter amount" TextColor="#F8FAFC" PlaceholderColor="#64748B" BackgroundColor="Transparent" />
+            </Border>
+
+            <Label Text="Currency" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Picker SelectedItem="{Binding Currency}" Title="Select currency" TextColor="#F8FAFC" TitleColor="#64748B" BackgroundColor="Transparent">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>USD ($)</x:String>
+                            <x:String>VND (đ)</x:String>
+                            <x:String>EUR (€)</x:String>
+                            <x:String>GBP (£)</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
+
+            <Label Text="Type" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Picker SelectedItem="{Binding Type}" Title="Select type" TextColor="#F8FAFC" TitleColor="#64748B" BackgroundColor="Transparent">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Travel</x:String>
+                            <x:String>Equipment</x:String>
+                            <x:String>Materials</x:String>
+                            <x:String>Services</x:String>
+                            <x:String>Software/Licenses</x:String>
+                            <x:String>Labour costs</x:String>
+                            <x:String>Utilities</x:String>
+                            <x:String>Miscellaneous</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
+
+            <Label Text="Date" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <DatePicker Date="{Binding SelectedDate}" Format="dd/MM/yyyy" TextColor="#F8FAFC" BackgroundColor="Transparent" />
+            </Border>
+
+            <Label Text="Payment Status" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Picker SelectedItem="{Binding PaymentStatus}" Title="Select status" TextColor="#F8FAFC" TitleColor="#64748B" BackgroundColor="Transparent">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Paid</x:String>
+                            <x:String>Pending</x:String>
+                            <x:String>Reimbursed</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
+
+            <Label Text="Payment Method" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Picker SelectedItem="{Binding PaymentMethod}" Title="Select method" TextColor="#F8FAFC" TitleColor="#64748B" BackgroundColor="Transparent">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Cash</x:String>
+                            <x:String>Credit Card</x:String>
+                            <x:String>Bank Transfer</x:String>
+                            <x:String>Cheque</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
+
+            <Label Text="Claimant" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Entry Text="{Binding Claimant}" Placeholder="Enter claimant name" TextColor="#F8FAFC" PlaceholderColor="#64748B" BackgroundColor="Transparent" />
+            </Border>
+
+            <Label Text="Location" Style="{StaticResource LabelStyle}" />
+            <Border Style="{StaticResource GlassBorder}">
+                <Entry Text="{Binding Location}" Placeholder="Enter location (optional)" TextColor="#F8FAFC" PlaceholderColor="#64748B" BackgroundColor="Transparent" />
+            </Border>
+
+            <Button Text="Save Expense" 
+                    Command="{Binding SaveCommand}" 
+                    BackgroundColor="#38BDF8" 
+                    TextColor="#0F172A" 
+                    FontAttributes="Bold"
+                    CornerRadius="16" 
+                    HeightRequest="60"
+                    Margin="0,30,0,15" />
+                    
+            <Button Text="Cancel" 
+                    Command="{Binding CancelCommand}" 
+                    BackgroundColor="#1E293B" 
+                    TextColor="#F8FAFC" 
+                    CornerRadius="16" 
+                    HeightRequest="60" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

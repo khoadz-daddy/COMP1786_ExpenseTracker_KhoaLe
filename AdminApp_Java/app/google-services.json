@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042133654819",
+    "project_id": "expensetrackercloud-891dd",
+    "storage_bucket": "expensetrackercloud-891dd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042133654819:android:de14db73777d0f2be4c096",
+        "android_client_info": {
+          "package_name": "com.khoale.expensetracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm3xGwijL4iKUbAQfKu_EIUfB3xvD4eaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
