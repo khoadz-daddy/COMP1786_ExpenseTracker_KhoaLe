@@ -49,3 +49,17 @@ This repository contains two main projects:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/khoadz-daddy/COMP1786_ExpenseTracker_KhoaLe.git
+
+Dear Lecturer,
+
+I would like to apologise because I accidentally submitted the wrong PDF file and also forgot to include the GitHub repository link in my original submission.
+
+I have now uploaded the correct supporting project files to my GitHub repository, including the COMP1786 logbook exercise projects. The repository link is:
+
+https://github.com/khoadz-daddy/COMP1786_ExpenseTracker_KhoaLe
+
+I am sorry for the mistake and any inconvenience caused.
+
+Kind regards,
+Le Anh Khoa
+
