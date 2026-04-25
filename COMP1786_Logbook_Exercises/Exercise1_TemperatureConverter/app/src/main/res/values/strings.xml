@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Exercise 1 Temperature Converter</string>
+    <string name="title_temperature">Temperature Converter</string>
+    <string name="hint_temperature">Enter temperature</string>
+    <string name="convert">Convert</string>
+    <string name="default_result">Result: --</string>
+</resources>

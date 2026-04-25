@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="purple_500">#6750A4</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">Exercise 1 Temperature Converter</string>
+    <string name="convert">Convert</string>
+    <string name="default_result">Result: --</string>
+    <string name="hint_temperature">Enter temperature</string>
+    <string name="title_temperature">Temperature Converter</string>
+    <style name="Theme.Exercise1" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/purple_500</item>
+    </style>
+</resources>

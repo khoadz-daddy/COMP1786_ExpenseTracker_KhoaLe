@@ -1,0 +1,27 @@
+R_DEF: Internal format may change without notice
+local
+color indigo
+color white
+id etExpenseAmount
+id etExpenseDate
+id etExpenseName
+id fabAddExpense
+id recyclerViewExpenses
+id spCategory
+id tvDelete
+id tvExpenseAmount
+id tvExpenseCategory
+id tvExpenseDate
+id tvExpenseName
+id tvTitle
+layout activity_main
+layout dialog_expense
+layout item_expense
+string add_expense
+string app_name
+string delete
+string hint_amount
+string hint_date
+string hint_expense_name
+string title_expense_tracker_sqlite
+style Theme.Exercise3

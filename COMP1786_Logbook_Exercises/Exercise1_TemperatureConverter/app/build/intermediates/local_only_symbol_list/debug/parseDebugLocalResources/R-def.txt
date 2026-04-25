@@ -1,0 +1,17 @@
+R_DEF: Internal format may change without notice
+local
+color purple_500
+color white
+id btnConvert
+id etTemperature
+id spFromUnit
+id spToUnit
+id tvResult
+id tvTitle
+layout activity_main
+string app_name
+string convert
+string default_result
+string hint_temperature
+string title_temperature
+style Theme.Exercise1

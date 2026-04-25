@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Exercise 3 Expense Tracker SQLite</string>
+    <string name="title_expense_tracker_sqlite">Expense Tracker SQLite</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="hint_expense_name">Expense name</string>
+    <string name="hint_amount">Amount</string>
+    <string name="hint_date">Date</string>
+    <string name="delete">Delete</string>
+</resources>

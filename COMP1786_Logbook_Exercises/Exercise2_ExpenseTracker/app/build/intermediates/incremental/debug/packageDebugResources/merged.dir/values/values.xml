@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="teal_700">#00695C</color>
+    <color name="white">#FFFFFF</color>
+    <string name="add_expense">Add Expense</string>
+    <string name="app_name">Exercise 2 Expense Tracker</string>
+    <string name="delete">Delete</string>
+    <string name="hint_amount">Amount</string>
+    <string name="hint_date">Date</string>
+    <string name="hint_expense_name">Expense name</string>
+    <string name="title_expense_tracker">Expense Tracker</string>
+    <style name="Theme.Exercise2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/teal_700</item>
+        <item name="colorPrimaryVariant">@color/teal_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/teal_700</item>
+    </style>
+</resources>

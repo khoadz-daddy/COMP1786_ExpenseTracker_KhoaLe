@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.mk183.exercise2.app-debug-32:/layout_activity_main.xml.flat",
+        "source": "com.mk183.exercise2.app-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.mk183.exercise2.app-debug-32:/layout_dialog_expense.xml.flat",
+        "source": "com.mk183.exercise2.app-main-34:/layout/dialog_expense.xml"
+    },
+    {
+        "merged": "com.mk183.exercise2.app-debug-32:/layout_item_expense.xml.flat",
+        "source": "com.mk183.exercise2.app-main-34:/layout/item_expense.xml"
+    }
+]

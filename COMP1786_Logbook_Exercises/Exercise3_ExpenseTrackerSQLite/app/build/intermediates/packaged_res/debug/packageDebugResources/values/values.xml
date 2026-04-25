@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="indigo">#3949AB</color>
+    <color name="white">#FFFFFF</color>
+    <string name="add_expense">Add Expense</string>
+    <string name="app_name">Exercise 3 Expense Tracker SQLite</string>
+    <string name="delete">Delete</string>
+    <string name="hint_amount">Amount</string>
+    <string name="hint_date">Date</string>
+    <string name="hint_expense_name">Expense name</string>
+    <string name="title_expense_tracker_sqlite">Expense Tracker SQLite</string>
+    <style name="Theme.Exercise3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/indigo</item>
+        <item name="colorPrimaryVariant">@color/indigo</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/indigo</item>
+    </style>
+</resources>
